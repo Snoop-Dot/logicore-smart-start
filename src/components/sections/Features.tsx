@@ -1,8 +1,12 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Calculator, DollarSign, ShoppingCart, Scan, Globe } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const Features = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
   const features = [
     {
       icon: Users,
@@ -36,10 +40,38 @@ const Features = () => {
     }
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="py-20 px-4 bg-white">
+    <section ref={sectionRef} className="py-20 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-10'
+        }`}>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Powerful Features for Modern Business
           </h2>
@@ -50,7 +82,17 @@ const Features = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-l-4 border-l-blue-600">
+            <Card 
+              key={index} 
+              className={`hover:shadow-lg transition-all duration-700 border-l-4 border-l-blue-600 ${
+                isVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-20'
+              }`}
+              style={{ 
+                transitionDelay: isVisible ? `${400 + index * 150}ms` : '0ms'
+              }}
+            >
               <CardHeader className="pb-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                   <feature.icon className="w-6 h-6 text-blue-600" />

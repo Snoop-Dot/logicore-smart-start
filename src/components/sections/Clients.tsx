@@ -1,7 +1,11 @@
 
 import { Card, CardContent } from "@/components/ui/card";
+import { useEffect, useRef, useState } from "react";
 
 const Clients = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
   const clients = [
     "Gourmet Foods",
     "Cresset Tech", 
@@ -26,10 +30,38 @@ const Clients = () => {
     "Tricon Beverages"
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="py-20 px-4 bg-white">
+    <section ref={sectionRef} className="py-20 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className={`text-center mb-16 transition-all duration-1000 ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-10'
+        }`}>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Our Clients
           </h2>
@@ -45,8 +77,14 @@ const Clients = () => {
           {clients.map((client, index) => (
             <Card 
               key={index} 
-              className="text-center hover:shadow-md transition-all duration-300 bg-gray-50 hover:bg-white border border-gray-200 hover-scale animate-fade-in"
-              style={{ animationDelay: `${index * 0.05}s` }}
+              className={`text-center hover:shadow-md transition-all duration-500 bg-gray-50 hover:bg-white border border-gray-200 hover-scale ${
+                isVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-20'
+              }`}
+              style={{ 
+                transitionDelay: isVisible ? `${400 + index * 50}ms` : '0ms'
+              }}
             >
               <CardContent className="py-6 px-3">
                 <p className="text-sm font-medium text-gray-800 leading-tight">

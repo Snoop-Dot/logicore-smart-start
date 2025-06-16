@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +14,8 @@ interface FormErrors {
 }
 
 const RequestDemo = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,6 +25,30 @@ const RequestDemo = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const validateForm = () => {
     const newErrors: FormErrors = {};
@@ -83,9 +109,13 @@ const RequestDemo = () => {
   };
 
   return (
-    <section id="request-demo" className="py-20 px-4 bg-white">
+    <section ref={sectionRef} id="request-demo" className="py-20 px-4 bg-white">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
+        <div className={`text-center mb-12 transition-all duration-1000 ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-10'
+        }`}>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Request a Demo
           </h2>
@@ -94,7 +124,11 @@ const RequestDemo = () => {
           </p>
         </div>
         
-        <Card className="max-w-2xl mx-auto shadow-lg">
+        <Card className={`max-w-2xl mx-auto shadow-lg transition-all duration-1000 delay-300 ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-20'
+        }`}>
           <CardHeader>
             <CardTitle className="text-2xl text-center text-gray-900">
               Get Your Free Demo
