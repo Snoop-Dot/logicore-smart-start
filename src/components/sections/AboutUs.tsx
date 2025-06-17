@@ -1,17 +1,17 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const WhyLogicore = () => {
+const AboutUs = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [visibleParagraphs, setVisibleParagraphs] = useState<boolean[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
   const paragraphRefs = useRef<(HTMLParagraphElement | null)[]>([]);
 
   const paragraphs = [
-    "Logicore goes beyond the traditional ERP boundaries to offer a flexible, powerful, and fully tailored experience for businesses ready to scale. We specialize in delivering smart solutions that span across HR, accounts, sales, CRM, warehouse management, e-commerce integration, and even barcode-supported inventory tracking.",
-    "Our deep industry insight allows us to create tools that don't just function—they fit. Whether you're running a large textile mill, a beverage distribution chain, or a startup bakery, our platform adapts to your pace and style of operation.",
-    "At Logicore, we believe software should work around your business—not the other way around. That's why every implementation includes strategic analysis, domain-specific customization, and a personal connection between our team and yours.",
-    "And with our in-house developers always ready to tweak, modify, and innovate—you're never locked into a one-size-fits-all system."
+    "At Logicore, we don't just build software—we build business ecosystems that evolve with you. Established with a vision to simplify and automate complex business processes, Logicore offers a fully integrated ERP platform that caters to businesses of all scales.",
+    "Our mission is to empower organizations through smart, scalable, and adaptable solutions that improve productivity, streamline operations, and unlock data-driven decision-making. With a dedicated team of developers, business analysts, and implementation experts, we ensure every module of Logicore reflects the real needs of modern businesses.",
+    "Whether it's retail, FMCG, manufacturing, or services—we dive deep into your operations to deliver software that actually understands you. Our commitment lies not only in what we build, but how we support it—with ongoing consultation, hands-on training, and full-cycle customization.",
+    "Logicore isn't just your software vendor—it's your strategic technology partner for the future."
   ];
 
   useEffect(() => {
@@ -72,15 +72,14 @@ const WhyLogicore = () => {
   }, [isVisible]);
 
   return (
-    <section ref={sectionRef} className="py-20 px-4 bg-gradient-to-br from-blue-50 to-indigo-100 relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 px-4 bg-white relative overflow-hidden">
       {/* Pop-up background effects */}
       <div className={`absolute inset-0 transition-all duration-1000 ${
         isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
       }`}>
-        <div className="absolute top-10 left-10 w-20 h-20 bg-blue-200/30 rounded-full animate-pulse"></div>
-        <div className="absolute top-32 right-20 w-16 h-16 bg-purple-200/30 rounded-full animate-pulse delay-500"></div>
-        <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-indigo-200/30 rounded-full animate-pulse delay-1000"></div>
-        <div className="absolute bottom-32 right-1/3 w-12 h-12 bg-blue-300/30 rounded-full animate-pulse delay-700"></div>
+        <div className="absolute top-16 right-16 w-32 h-32 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full opacity-50 animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-24 h-24 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full opacity-50 animate-pulse delay-700"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-full opacity-30 animate-pulse delay-1000"></div>
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -90,7 +89,7 @@ const WhyLogicore = () => {
             : 'opacity-0 translate-y-10 scale-95'
         }`}>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Why Logicore
+            About Us
           </h2>
         </div>
 
@@ -103,7 +102,7 @@ const WhyLogicore = () => {
                 visibleParagraphs[index]
                   ? 'opacity-100 translate-y-0 scale-100'
                   : 'opacity-0 translate-y-8 scale-95'
-              } hover:scale-105 hover:shadow-lg hover:bg-white/50 rounded-lg p-4 cursor-default`}
+              } hover:scale-105 hover:shadow-lg hover:bg-gray-50 rounded-lg p-4 cursor-default`}
               style={{ 
                 transitionDelay: `${300 + index * 200}ms`
               }}
@@ -118,11 +117,12 @@ const WhyLogicore = () => {
       <div className={`absolute inset-0 pointer-events-none transition-all duration-2000 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}>
-        <div className="absolute top-1/4 left-0 w-2 h-2 bg-blue-400 rounded-full animate-ping delay-1000"></div>
-        <div className="absolute top-3/4 right-0 w-1 h-1 bg-purple-400 rounded-full animate-ping delay-1500"></div>
+        <div className="absolute top-1/3 left-10 w-3 h-3 bg-blue-400 rounded-full animate-ping delay-800"></div>
+        <div className="absolute bottom-1/3 right-10 w-2 h-2 bg-purple-400 rounded-full animate-ping delay-1200"></div>
+        <div className="absolute top-2/3 left-1/3 w-1 h-1 bg-indigo-400 rounded-full animate-ping delay-1600"></div>
       </div>
     </section>
   );
 };
 
-export default WhyLogicore;
+export default AboutUs;
