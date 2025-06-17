@@ -11,6 +11,11 @@ const Navbar = () => {
     { name: "About Us", href: "#about-us" },
     { name: "Our Journey", href: "#our-journey" },
     { name: "Why Logicore", href: "#why-logicore" },
+    { name: "Testimonials", href: "#testimonials" },
+    { name: "Comparison", href: "#comparison" },
+    { name: "Integrations", href: "#integrations" },
+    { name: "FAQs", href: "#faqs" },
+    { name: "Awards", href: "#awards" },
     { name: "Clients", href: "#clients" },
     { name: "Request Demo", href: "#request-demo" },
   ];
