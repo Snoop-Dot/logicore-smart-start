@@ -6,7 +6,6 @@ import AboutUs from "@/components/sections/AboutUs";
 import WhyLogicore from "@/components/sections/WhyLogicore";
 import OurJourney from "@/components/sections/OurJourney";
 import Testimonials from "@/components/sections/Testimonials";
-import Comparison from "@/components/sections/Comparison";
 import Integrations from "@/components/sections/Integrations";
 import FAQs from "@/components/sections/FAQs";
 import Awards from "@/components/sections/Awards";
@@ -34,9 +33,6 @@ const Index = () => {
         </div>
         <div id="testimonials">
           <Testimonials />
-        </div>
-        <div id="comparison">
-          <Comparison />
         </div>
         <div id="integrations">
           <Integrations />

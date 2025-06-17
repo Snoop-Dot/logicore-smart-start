@@ -33,7 +33,7 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      name: "Ahmed Hassan",
+      name: "Zubair Nawaz",
       company: "Gourmet Foods",
       rating: 5,
       review: "Logicore has revolutionized our food distribution business. The inventory tracking and order management system helped us reduce waste by 45% and increase customer satisfaction tremendously."
@@ -45,13 +45,13 @@ const Testimonials = () => {
       review: "Managing multiple retail outlets was a nightmare before Logicore. Now we have complete visibility across all stores with real-time sales tracking and automated inventory management."
     },
     {
-      name: "Sarah Khan",
+      name: "Zeeshan Khan",
       company: "Yes Print",
       rating: 5,
       review: "The printing business requires precise order tracking and customer management. Logicore's CRM and job tracking modules have streamlined our entire workflow and doubled our efficiency."
     },
     {
-      name: "Usman Ahmed",
+      name: "Khuraam",
       company: "KalamKaar",
       rating: 4,
       review: "As a creative agency, we needed something flexible yet powerful. Logicore's project management and billing features have made our operations smooth and professional."
