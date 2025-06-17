@@ -8,16 +8,16 @@ const Navbar = () => {
 
   const navItems = [
     { name: "Features", href: "#features" },
-    { name: "About Us", href: "#about-us" },
-    { name: "Our Journey", href: "#our-journey" },
-    { name: "Why Logicore", href: "#why-logicore" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Comparison", href: "#comparison" },
+    { name: "About", href: "#about-us" },
+    { name: "Our Story", href: "#our-journey" },
+    { name: "Why Choose Us", href: "#why-logicore" },
+    { name: "Reviews", href: "#testimonials" },
+    { name: "Compare", href: "#comparison" },
     { name: "Integrations", href: "#integrations" },
-    { name: "FAQs", href: "#faqs" },
+    { name: "Help", href: "#faqs" },
     { name: "Awards", href: "#awards" },
     { name: "Clients", href: "#clients" },
-    { name: "Request Demo", href: "#request-demo" },
+    { name: "Get Demo", href: "#request-demo" },
   ];
 
   const scrollToSection = (href: string) => {

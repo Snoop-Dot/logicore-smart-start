@@ -33,40 +33,40 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      name: "Rajesh Kumar",
-      company: "ABC Textiles Ltd.",
+      name: "Ahmed Hassan",
+      company: "Gourmet Foods",
       rating: 5,
-      review: "Logicore has transformed our textile business operations. The inventory management and production tracking features are outstanding. We've seen 40% improvement in efficiency."
+      review: "Logicore has revolutionized our food distribution business. The inventory tracking and order management system helped us reduce waste by 45% and increase customer satisfaction tremendously."
     },
     {
-      name: "Priya Sharma",
-      company: "Fresh Foods Distribution",
+      name: "Muhammad Ali",
+      company: "Al-Fatah",
       rating: 5,
-      review: "The barcode integration and warehouse management system has streamlined our entire distribution process. Customer satisfaction has increased significantly."
+      review: "Managing multiple retail outlets was a nightmare before Logicore. Now we have complete visibility across all stores with real-time sales tracking and automated inventory management."
     },
     {
-      name: "Amit Patel",
-      company: "Golden Bakery Chain",
+      name: "Sarah Khan",
+      company: "Yes Print",
       rating: 5,
-      review: "From a small bakery to a chain of 15 outlets, Logicore scaled with us perfectly. The HR and accounts modules are incredibly user-friendly."
+      review: "The printing business requires precise order tracking and customer management. Logicore's CRM and job tracking modules have streamlined our entire workflow and doubled our efficiency."
     },
     {
-      name: "Sunita Gupta",
-      company: "Modern Electronics",
+      name: "Usman Ahmed",
+      company: "KalamKaar",
       rating: 4,
-      review: "The CRM and sales tracking features have helped us increase our revenue by 35%. The customer support team is always responsive."
+      review: "As a creative agency, we needed something flexible yet powerful. Logicore's project management and billing features have made our operations smooth and professional."
     },
     {
-      name: "Vikram Singh",
-      company: "Steel Works India",
+      name: "Fatima Sheikh",
+      company: "Treschic",
       rating: 5,
-      review: "Managing our steel manufacturing was complex until we found Logicore. The custom workflows and reporting tools are exactly what we needed."
+      review: "Our fashion retail business transformed completely with Logicore. The e-commerce integration and inventory management helped us expand from 2 to 8 outlets successfully."
     },
     {
-      name: "Meera Joshi",
-      company: "Fashion Hub",
+      name: "Hassan Malik",
+      company: "Finlinx",
       rating: 5,
-      review: "The e-commerce integration helped us expand online seamlessly. Sales have doubled since implementing Logicore."
+      review: "Financial services require accuracy and reliability. Logicore's accounting modules and reporting tools have given us the precision we need while maintaining compliance standards."
     }
   ];
 

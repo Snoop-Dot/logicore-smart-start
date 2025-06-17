@@ -72,7 +72,7 @@ const Awards = () => {
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Best Performance Award 2024
+                Best Performance Award 2019
               </h3>
               <div className="flex justify-center mb-4">
                 {Array.from({ length: 5 }, (_, i) => (
@@ -127,7 +127,7 @@ const Awards = () => {
             </h3>
             <div className="text-lg text-gray-700 leading-relaxed space-y-4">
               <p>
-                We are honored to have received the prestigious "Best Performance Award 2024" from Gourmet Company, 
+                We are honored to have received the prestigious "Best Performance Award 2019" from Gourmet Company, 
                 recognizing our exceptional contribution to transforming their business operations through innovative 
                 ERP solutions.
               </p>
