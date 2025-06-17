@@ -1,4 +1,5 @@
 
+import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import Features from "@/components/sections/Features";
 import AboutUs from "@/components/sections/AboutUs";
@@ -11,14 +12,29 @@ import Footer from "@/components/sections/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Hero />
-      <Features />
-      <AboutUs />
-      <WhyLogicore />
-      <OurJourney />
-      <Clients />
-      <RequestDemo />
-      <Footer />
+      <Navbar />
+      <div className="pt-16"> {/* Add padding to account for fixed navbar */}
+        <Hero />
+        <div id="features">
+          <Features />
+        </div>
+        <div id="about-us">
+          <AboutUs />
+        </div>
+        <div id="why-logicore">
+          <WhyLogicore />
+        </div>
+        <div id="our-journey">
+          <OurJourney />
+        </div>
+        <div id="clients">
+          <Clients />
+        </div>
+        <div id="request-demo">
+          <RequestDemo />
+        </div>
+        <Footer />
+      </div>
     </div>
   );
 };
