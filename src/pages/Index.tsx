@@ -17,44 +17,46 @@ import Footer from "@/components/sections/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
-      <div className="pt-16"> {/* Add padding to account for fixed navbar */}
-        <Hero />
-        <div id="features">
+      <div className="pt-16">
+        <div className="animate-fade-in">
+          <Hero />
+        </div>
+        <div id="features" className="animate-slide-in-left" style={{ animationDelay: '0.2s' }}>
           <Features />
         </div>
-        <div id="about-us">
+        <div id="about-us" className="animate-slide-in-right" style={{ animationDelay: '0.4s' }}>
           <AboutUs />
         </div>
-        <div id="why-logicore">
+        <div id="why-logicore" className="animate-slide-in-left" style={{ animationDelay: '0.6s' }}>
           <WhyLogicore />
         </div>
-        <div id="our-journey">
+        <div id="our-journey" className="animate-slide-in-right" style={{ animationDelay: '0.8s' }}>
           <OurJourney />
         </div>
-        <div id="testimonials">
+        <div id="testimonials" className="animate-slide-in-left" style={{ animationDelay: '1s' }}>
           <Testimonials />
         </div>
-        <div id="integrations">
+        <div id="integrations" className="animate-slide-in-right" style={{ animationDelay: '1.2s' }}>
           <Integrations />
         </div>
-        <div id="workflow">
+        <div id="workflow" className="animate-slide-in-left" style={{ animationDelay: '1.4s' }}>
           <Workflow />
         </div>
-        <div id="data-security">
+        <div id="data-security" className="animate-slide-in-right" style={{ animationDelay: '1.6s' }}>
           <DataSecurity />
         </div>
-        <div id="faqs">
+        <div id="faqs" className="animate-slide-in-left" style={{ animationDelay: '1.8s' }}>
           <FAQs />
         </div>
-        <div id="awards">
+        <div id="awards" className="animate-slide-in-right" style={{ animationDelay: '2s' }}>
           <Awards />
         </div>
-        <div id="clients">
+        <div id="clients" className="animate-slide-in-left" style={{ animationDelay: '2.2s' }}>
           <Clients />
         </div>
-        <div id="request-demo">
+        <div id="request-demo" className="animate-slide-in-right" style={{ animationDelay: '2.4s' }}>
           <RequestDemo />
         </div>
         <Footer />

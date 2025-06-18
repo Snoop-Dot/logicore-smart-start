@@ -95,12 +95,80 @@ export default {
 						opacity: '1',
 						transform: 'translateY(0)'
 					}
+				},
+				'slide-in-left': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateX(-100px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateX(0)'
+					}
+				},
+				'slide-in-right': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateX(100px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateX(0)'
+					}
+				},
+				'slide-in-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(100px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'scale-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'scale(0.8)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'scale(1)'
+					}
+				},
+				'bounce-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'scale(0.3) translateY(50px)'
+					},
+					'50%': {
+						opacity: '1',
+						transform: 'scale(1.1) translateY(-10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'scale(1) translateY(0)'
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0px)'
+					},
+					'50%': {
+						transform: 'translateY(-20px)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.6s ease-out forwards'
+				'fade-in': 'fade-in 0.8s ease-out forwards',
+				'slide-in-left': 'slide-in-left 1s ease-out forwards',
+				'slide-in-right': 'slide-in-right 1s ease-out forwards',
+				'slide-in-up': 'slide-in-up 0.8s ease-out forwards',
+				'scale-in': 'scale-in 0.6s ease-out forwards',
+				'bounce-in': 'bounce-in 1s ease-out forwards',
+				'float': 'float 3s ease-in-out infinite'
 			}
 		}
 	},
@@ -110,6 +178,15 @@ export default {
 			const newUtilities = {
 				'.hover-scale': {
 					'@apply transition-transform duration-300 hover:scale-105': {}
+				},
+				'.glass-effect': {
+					'@apply backdrop-blur-sm bg-white/10 border border-white/20': {}
+				},
+				'.modern-shadow': {
+					'@apply shadow-[0_8px_30px_rgb(0,0,0,0.12)]': {}
+				},
+				'.gradient-border': {
+					'@apply bg-gradient-to-r from-blue-500 to-purple-500 p-[1px] rounded-lg': {}
 				}
 			}
 			addUtilities(newUtilities)
