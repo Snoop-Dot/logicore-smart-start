@@ -33,7 +33,7 @@ const FAQs = () => {
   const faqs = [
     {
       question: "What makes Logicore different from other ERP solutions?",
-      answer: "Logicore is specifically designed for Indian businesses with deep industry insights. We offer complete customization, barcode integration, multi-location support, and dedicated local support. Unlike generic solutions, we adapt to your business processes rather than forcing you to change."
+      answer: "Logicore is specifically designed for Pakistani businesses with deep industry insights. We offer complete customization, barcode integration, multi-location support, and dedicated local support. Unlike generic solutions, we adapt to your business processes rather than forcing you to change."
     },
     {
       question: "Is Logicore suitable for small businesses?",
@@ -45,15 +45,15 @@ const FAQs = () => {
     },
     {
       question: "Do you provide training and support?",
-      answer: "Yes! We provide comprehensive training for your team, detailed documentation, and 24/7 customer support. Our Indian support team understands local business practices and can assist you in multiple languages."
+      answer: "Yes! We provide comprehensive training for your team, detailed documentation, and 24/7 customer support. Our Pakistani support team understands local business practices and can assist you in multiple languages including Urdu and English."
     },
     {
-      question: "Can Logicore handle GST compliance?",
-      answer: "Yes, Logicore is fully GST compliant and automatically generates all required GST reports, invoices, and returns. We stay updated with the latest GST regulations to ensure your business remains compliant."
+      question: "Can Logicore handle tax compliance?",
+      answer: "Yes, Logicore is fully compliant with Pakistani tax regulations and automatically generates all required tax reports, invoices, and returns. We stay updated with the latest FBR regulations to ensure your business remains compliant."
     },
     {
       question: "Is my data secure with Logicore?",
-      answer: "Data security is our top priority. We use bank-grade encryption, regular automated backups, and secure cloud infrastructure. Your data is stored in Indian servers and complies with all data protection regulations."
+      answer: "Data security is our top priority. We use bank-grade encryption, regular automated backups, and secure cloud infrastructure. Your data is stored in Pakistani servers and complies with all local data protection regulations."
     },
     {
       question: "Can I integrate Logicore with my existing systems?",
