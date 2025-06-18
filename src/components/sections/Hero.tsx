@@ -108,9 +108,6 @@ const Hero = () => {
           >
             Get Started Today
           </Button>
-          <p className="text-sm text-gray-500 mt-4">
-            ✨ No setup fees • 30-day free trial • 24/7 support
-          </p>
         </div>
       </div>
     </section>

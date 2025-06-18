@@ -13,6 +13,8 @@ const Navbar = () => {
     { name: "Why Choose Us", href: "#why-logicore" },
     { name: "Reviews", href: "#testimonials" },
     { name: "Integrations", href: "#integrations" },
+    { name: "Workflow", href: "#workflow" },
+    { name: "Security", href: "#data-security" },
     { name: "Help", href: "#faqs" },
     { name: "Awards", href: "#awards" },
     { name: "Clients", href: "#clients" },

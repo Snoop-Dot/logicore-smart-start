@@ -37,7 +37,7 @@ const Integrations = () => {
     },
     {
       category: "Payment Gateways",
-      items: ["Razorpay", "PayU", "Paytm", "PhonePe", "Google Pay", "JazzCash", "Easypaisa", "UBL Omni", "HBL Konnect", "Klarna"]
+      items: ["JazzCash", "Easypaisa", "UBL Omni", "HBL Konnect", "Klarna"]
     },
     {
       category: "Accounting Software",
@@ -49,11 +49,15 @@ const Integrations = () => {
     },
     {
       category: "Logistics & Shipping",
-      items: ["Blue Dart", "DTDC", "Delhivery", "Ecom Express", "India Post", "TCS Courier", "Leopards Courier", "Call Courier", "M&P Express", "Trax Pakistan"]
+      items: ["TCS Courier", "Leopards Courier", "Call Courier", "M&P Express", "Trax Pakistan"]
     },
     {
       category: "Banking & Finance",
-      items: ["Net Banking", "UPI", "NEFT/RTGS", "Bank Reconciliation", "Loan Management", "HBL Bank", "UBL Bank", "MCB Bank", "NBP Bank", "Meezan Bank", "Faysal Bank"]
+      items: ["HBL Bank", "UBL Bank", "MCB Bank", "NBP Bank", "Meezan Bank"]
+    },
+    {
+      category: "AI Chatbot Integration",
+      items: ["Customer Support", "Lead Generation", "Order Tracking", "FAQ Assistance", "24/7 Chat Support"]
     }
   ];
 
