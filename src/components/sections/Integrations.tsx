@@ -33,7 +33,7 @@ const Integrations = () => {
   const integrations = [
     {
       category: "E-commerce Platforms",
-      items: ["Shopify", "WooCommerce", "Magento", "Amazon", "Flipkart"]
+      items: ["Shopify", "WooCommerce", "Magento", "Daraz", "OLX Pakistan"]
     },
     {
       category: "Payment Gateways",
@@ -41,7 +41,7 @@ const Integrations = () => {
     },
     {
       category: "Accounting Software",
-      items: ["Tally", "QuickBooks", "Zoho Books", "SAP", "GST Compliance"]
+      items: ["QuickBooks", "Zoho Books", "SAP", "FBR Tax Solutions", "Pakistan Tax Compliance"]
     },
     {
       category: "Communication Tools",
@@ -74,7 +74,7 @@ const Integrations = () => {
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Connect Logicore with your favorite tools and platforms. Our extensive integration ecosystem 
-            ensures your business runs smoothly across all channels.
+            ensures your business runs smoothly across all channels in Pakistan.
           </p>
         </div>
 

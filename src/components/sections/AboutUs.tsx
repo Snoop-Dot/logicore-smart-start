@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 
 const AboutUs = () => {
@@ -8,10 +7,10 @@ const AboutUs = () => {
   const paragraphRefs = useRef<(HTMLParagraphElement | null)[]>([]);
 
   const paragraphs = [
-    "At Logicore, we don't just build software—we build business ecosystems that evolve with you. Established with a vision to simplify and automate complex business processes, Logicore offers a fully integrated ERP platform that caters to businesses of all scales.",
-    "Our mission is to empower organizations through smart, scalable, and adaptable solutions that improve productivity, streamline operations, and unlock data-driven decision-making. With a dedicated team of developers, business analysts, and implementation experts, we ensure every module of Logicore reflects the real needs of modern businesses.",
-    "Whether it's retail, FMCG, manufacturing, or services—we dive deep into your operations to deliver software that actually understands you. Our commitment lies not only in what we build, but how we support it—with ongoing consultation, hands-on training, and full-cycle customization.",
-    "Logicore isn't just your software vendor—it's your strategic technology partner for the future."
+    "At Logicore, we don't just build software—we build business ecosystems that evolve with you. Established with a vision to simplify and automate complex business processes, Logicore offers a fully integrated ERP platform that caters to Pakistani businesses of all scales.",
+    "Our mission is to empower Pakistani organizations through smart, scalable, and adaptable solutions that improve productivity, streamline operations, and unlock data-driven decision-making. With a dedicated team of developers, business analysts, and implementation experts, we ensure every module of Logicore reflects the real needs of modern Pakistani businesses.",
+    "Whether it's retail, FMCG, manufacturing, or services—we dive deep into your operations to deliver software that actually understands Pakistani business environment. Our commitment lies not only in what we build, but how we support it—with ongoing consultation, hands-on training, and full-cycle customization tailored for Pakistan.",
+    "Logicore isn't just your software vendor—it's your strategic technology partner for the future of Pakistani business excellence."
   ];
 
   useEffect(() => {
