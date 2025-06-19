@@ -22,46 +22,8 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   }
 
   return (
-    <div className={`fixed inset-0 bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 z-50 flex items-center justify-center transition-all duration-800 ${
-      fadeOut ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
-    }`}>
-      <div className="text-center">
-        <div className="relative mb-8">
-          <div className="absolute inset-0 bg-white/20 rounded-full animate-ping"></div>
-          <img 
-            src="/lovable-uploads/1948b5bc-c08b-4e05-87df-7c2c4fd96b27.png" 
-            alt="Logicore Logo" 
-            className="relative w-32 h-32 mx-auto animate-bounce"
-            style={{
-              animation: 'bounce 2s infinite, fadeInScale 1s ease-out'
-            }}
-          />
-        </div>
-        <div 
-          className="text-white text-3xl font-bold mb-2 animate-fade-in"
-          style={{ 
-            animation: 'slideInUp 0.8s ease-out 0.5s both, glow 2s ease-in-out infinite alternate'
-          }}
-        >
-          LOGICORE
-        </div>
-        <div 
-          className="text-white/90 text-lg mb-6 animate-fade-in"
-          style={{ animation: 'slideInUp 0.8s ease-out 0.8s both' }}
-        >
-          Smart Business Solutions
-        </div>
-        <div 
-          className="flex justify-center space-x-1"
-          style={{ animation: 'slideInUp 0.8s ease-out 1.2s both' }}
-        >
-          <div className="w-2 h-2 bg-white rounded-full animate-pulse" style={{ animationDelay: '0s' }}></div>
-          <div className="w-2 h-2 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-          <div className="w-2 h-2 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
-        </div>
-      </div>
-      
-      <style jsx>{`
+    <>
+      <style>{`
         @keyframes fadeInScale {
           0% {
             opacity: 0;
@@ -93,7 +55,46 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           }
         }
       `}</style>
-    </div>
+      <div className={`fixed inset-0 bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 z-50 flex items-center justify-center transition-all duration-800 ${
+        fadeOut ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+      }`}>
+        <div className="text-center">
+          <div className="relative mb-8">
+            <div className="absolute inset-0 bg-white/20 rounded-full animate-ping"></div>
+            <img 
+              src="/lovable-uploads/1948b5bc-c08b-4e05-87df-7c2c4fd96b27.png" 
+              alt="Logicore Logo" 
+              className="relative w-32 h-32 mx-auto animate-bounce"
+              style={{
+                animation: 'bounce 2s infinite, fadeInScale 1s ease-out'
+              }}
+            />
+          </div>
+          <div 
+            className="text-white text-3xl font-bold mb-2 animate-fade-in"
+            style={{ 
+              animation: 'slideInUp 0.8s ease-out 0.5s both, glow 2s ease-in-out infinite alternate'
+            }}
+          >
+            LOGICORE
+          </div>
+          <div 
+            className="text-white/90 text-lg mb-6 animate-fade-in"
+            style={{ animation: 'slideInUp 0.8s ease-out 0.8s both' }}
+          >
+            Smart Business Solutions
+          </div>
+          <div 
+            className="flex justify-center space-x-1"
+            style={{ animation: 'slideInUp 0.8s ease-out 1.2s both' }}
+          >
+            <div className="w-2 h-2 bg-white rounded-full animate-pulse" style={{ animationDelay: '0s' }}></div>
+            <div className="w-2 h-2 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+            <div className="w-2 h-2 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
