@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Calculator, DollarSign, ShoppingCart, Scan, Globe, ArrowLeft } from "lucide-react";
@@ -103,6 +102,11 @@ const Modules = () => {
     }
   ];
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -129,18 +133,16 @@ const Modules = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
-      {/* Header with Back Button */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <Button
-            onClick={() => navigate('/')}
-            variant="outline"
-            className="mb-4 hover-scale"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Home
-          </Button>
-        </div>
+      {/* Floating Back Button */}
+      <div className="fixed top-6 left-6 z-50">
+        <Button
+          onClick={() => navigate('/')}
+          variant="outline"
+          className="bg-white/90 backdrop-blur-sm hover:bg-white hover-scale shadow-lg modern-shadow"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Back to Home
+        </Button>
       </div>
 
       <section ref={sectionRef} className="py-20 px-4 relative overflow-hidden">
