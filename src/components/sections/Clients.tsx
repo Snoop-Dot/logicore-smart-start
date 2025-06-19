@@ -1,32 +1,34 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
+import { Building2, Factory, Store, Truck, Shirt, Coffee, GraduationCap, Briefcase, ShoppingBag, TreePine, Palette, Fish, Car, Home, Package, Utensils, Smartphone, Banknote, Heart, Wrench, Coffee as CoffeeIcon } from "lucide-react";
 
 const Clients = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   const clients = [
-    { name: "Gourmet Foods", logo: "/placeholder.svg" },
-    { name: "Cresset Tech", logo: "/placeholder.svg" }, 
-    { name: "Amtex", logo: "/placeholder.svg" },
-    { name: "Finlinx", logo: "/placeholder.svg" },
-    { name: "Al-Momin", logo: "/placeholder.svg" },
-    { name: "KalamKaar", logo: "/placeholder.svg" },
-    { name: "Ghani Group", logo: "/placeholder.svg" },
-    { name: "Loot.Sale", logo: "/placeholder.svg" },
-    { name: "Ali Danyal", logo: "/placeholder.svg" },
-    { name: "Mezan", logo: "/placeholder.svg" },
-    { name: "Korangi Fisheries", logo: "/placeholder.svg" },
-    { name: "Depilex", logo: "/placeholder.svg" },
-    { name: "Angel College", logo: "/placeholder.svg" },
-    { name: "Cotton Passion", logo: "/placeholder.svg" },
-    { name: "Yes Print", logo: "/placeholder.svg" },
-    { name: "Umer Farm", logo: "/placeholder.svg" },
-    { name: "Treschic", logo: "/placeholder.svg" },
-    { name: "Al‑Fatah", logo: "/placeholder.svg" },
-    { name: "AI‑Textile", logo: "/placeholder.svg" },
-    { name: "Makkah Wood", logo: "/placeholder.svg" },
-    { name: "Tricon Beverages", logo: "/placeholder.svg" }
+    { name: "Gourmet Foods", icon: Utensils, color: "text-green-600" },
+    { name: "Cresset Tech", icon: Smartphone, color: "text-blue-600" }, 
+    { name: "Amtex", icon: Factory, color: "text-gray-600" },
+    { name: "Finlinx", icon: Banknote, color: "text-emerald-600" },
+    { name: "Al-Momin", icon: Building2, color: "text-orange-600" },
+    { name: "KalamKaar", icon: Palette, color: "text-purple-600" },
+    { name: "Ghani Group", icon: Briefcase, color: "text-indigo-600" },
+    { name: "Loot.Sale", icon: ShoppingBag, color: "text-pink-600" },
+    { name: "Ali Danyal", icon: Store, color: "text-yellow-600" },
+    { name: "Mezan", icon: Coffee, color: "text-amber-600" },
+    { name: "Korangi Fisheries", icon: Fish, color: "text-cyan-600" },
+    { name: "Depilex", icon: Heart, color: "text-rose-600" },
+    { name: "Angel College", icon: GraduationCap, color: "text-blue-500" },
+    { name: "Cotton Passion", icon: Shirt, color: "text-teal-600" },
+    { name: "Yes Print", icon: Package, color: "text-red-600" },
+    { name: "Umer Farm", icon: TreePine, color: "text-green-500" },
+    { name: "Treschic", icon: Shirt, color: "text-violet-600" },
+    { name: "Al‑Fatah", icon: Store, color: "text-orange-500" },
+    { name: "AI‑Textile", icon: Factory, color: "text-slate-600" },
+    { name: "Makkah Wood", icon: Home, color: "text-brown-600" },
+    { name: "Tricon Beverages", icon: CoffeeIcon, color: "text-amber-500" }
   ];
 
   useEffect(() => {
@@ -73,32 +75,33 @@ const Clients = () => {
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4">
-          {clients.map((client, index) => (
-            <Card 
-              key={index} 
-              className={`text-center hover:shadow-md transition-all duration-500 bg-gray-50 hover:bg-white border border-gray-200 hover-scale group ${
-                isVisible 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-20'
-              }`}
-              style={{ 
-                transitionDelay: isVisible ? `${400 + index * 50}ms` : '0ms'
-              }}
-            >
-              <CardContent className="py-6 px-3">
-                <div className="mb-3">
-                  <img 
-                    src={client.logo} 
-                    alt={`${client.name} logo`}
-                    className="w-12 h-12 mx-auto object-contain group-hover:scale-110 transition-transform duration-300 rounded"
-                  />
-                </div>
-                <p className="text-sm font-medium text-gray-800 leading-tight">
-                  {client.name}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+          {clients.map((client, index) => {
+            const IconComponent = client.icon;
+            return (
+              <Card 
+                key={index} 
+                className={`text-center hover:shadow-md transition-all duration-500 bg-gray-50 hover:bg-white border border-gray-200 hover-scale group ${
+                  isVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-20'
+                }`}
+                style={{ 
+                  transitionDelay: isVisible ? `${400 + index * 50}ms` : '0ms'
+                }}
+              >
+                <CardContent className="py-6 px-3">
+                  <div className="mb-3">
+                    <IconComponent 
+                      className={`w-8 h-8 mx-auto ${client.color} group-hover:scale-110 transition-transform duration-300`}
+                    />
+                  </div>
+                  <p className="text-sm font-medium text-gray-800 leading-tight">
+                    {client.name}
+                  </p>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
