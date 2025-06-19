@@ -24,10 +24,14 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   return (
     <>
       <style>{`
-        @keyframes fadeInScale {
+        @keyframes logoAppear {
           0% {
             opacity: 0;
-            transform: scale(0.8);
+            transform: scale(0.3);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.1);
           }
           100% {
             opacity: 1;
@@ -35,10 +39,10 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           }
         }
         
-        @keyframes slideInUp {
+        @keyframes textSlideUp {
           0% {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
           }
           100% {
             opacity: 1;
@@ -46,51 +50,75 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           }
         }
         
-        @keyframes glow {
+        @keyframes dotPulse {
+          0%, 100% {
+            opacity: 0.4;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.2);
+          }
+        }
+
+        @keyframes shimmer {
           0% {
-            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+            background-position: -200% 0;
           }
           100% {
-            text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.6);
+            background-position: 200% 0;
           }
         }
       `}</style>
-      <div className={`fixed inset-0 bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 z-50 flex items-center justify-center transition-all duration-800 ${
-        fadeOut ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+      <div className={`fixed inset-0 bg-white z-50 flex items-center justify-center transition-all duration-800 ${
+        fadeOut ? 'opacity-0' : 'opacity-100'
       }`}>
         <div className="text-center">
           <div className="relative mb-8">
-            <div className="absolute inset-0 bg-white/20 rounded-full animate-ping"></div>
             <img 
               src="/lovable-uploads/1948b5bc-c08b-4e05-87df-7c2c4fd96b27.png" 
               alt="Logicore Logo" 
-              className="relative w-32 h-32 mx-auto animate-bounce"
+              className="w-24 h-24 mx-auto"
               style={{
-                animation: 'bounce 2s infinite, fadeInScale 1s ease-out'
+                animation: 'logoAppear 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards'
               }}
             />
           </div>
           <div 
-            className="text-white text-3xl font-bold mb-2 animate-fade-in"
+            className="text-gray-700 text-2xl font-light mb-4 tracking-wide"
             style={{ 
-              animation: 'slideInUp 0.8s ease-out 0.5s both, glow 2s ease-in-out infinite alternate'
+              animation: 'textSlideUp 0.8s ease-out 0.6s both',
+              background: 'linear-gradient(90deg, #374151, #6B7280, #374151)',
+              backgroundSize: '200% 100%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
             }}
           >
             LOGICORE
           </div>
           <div 
-            className="text-white/90 text-lg mb-6 animate-fade-in"
-            style={{ animation: 'slideInUp 0.8s ease-out 0.8s both' }}
+            className="text-gray-500 text-sm mb-8 font-normal"
+            style={{ animation: 'textSlideUp 0.8s ease-out 0.9s both' }}
           >
             Smart Business Solutions
           </div>
           <div 
-            className="flex justify-center space-x-1"
-            style={{ animation: 'slideInUp 0.8s ease-out 1.2s both' }}
+            className="flex justify-center space-x-2"
+            style={{ animation: 'textSlideUp 0.8s ease-out 1.2s both' }}
           >
-            <div className="w-2 h-2 bg-white rounded-full animate-pulse" style={{ animationDelay: '0s' }}></div>
-            <div className="w-2 h-2 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-            <div className="w-2 h-2 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+            <div 
+              className="w-2 h-2 bg-blue-500 rounded-full"
+              style={{ animation: 'dotPulse 1.4s ease-in-out infinite' }}
+            ></div>
+            <div 
+              className="w-2 h-2 bg-blue-500 rounded-full"
+              style={{ animation: 'dotPulse 1.4s ease-in-out infinite 0.2s' }}
+            ></div>
+            <div 
+              className="w-2 h-2 bg-blue-500 rounded-full"
+              style={{ animation: 'dotPulse 1.4s ease-in-out infinite 0.4s' }}
+            ></div>
           </div>
         </div>
       </div>
