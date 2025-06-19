@@ -7,27 +7,27 @@ const Clients = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   const clients = [
-    "Gourmet Foods",
-    "Cresset Tech", 
-    "Amtex",
-    "Finlinx",
-    "Al-Momin",
-    "KalamKaar",
-    "Ghani Group",
-    "Loot.Sale",
-    "Ali Danyal",
-    "Mezan",
-    "Korangi Fisheries",
-    "Depilex",
-    "Angel College",
-    "Cotton Passion",
-    "Yes Print",
-    "Umer Farm",
-    "Treschic",
-    "Al‑Fatah",
-    "AI‑Textile",
-    "Makkah Wood",
-    "Tricon Beverages"
+    { name: "Gourmet Foods", logo: "🍽️" },
+    { name: "Cresset Tech", logo: "💻" }, 
+    { name: "Amtex", logo: "🏭" },
+    { name: "Finlinx", logo: "💰" },
+    { name: "Al-Momin", logo: "🕌" },
+    { name: "KalamKaar", logo: "✏️" },
+    { name: "Ghani Group", logo: "🏢" },
+    { name: "Loot.Sale", logo: "🛒" },
+    { name: "Ali Danyal", logo: "👨‍💼" },
+    { name: "Mezan", logo: "🥛" },
+    { name: "Korangi Fisheries", logo: "🐟" },
+    { name: "Depilex", logo: "💄" },
+    { name: "Angel College", logo: "🎓" },
+    { name: "Cotton Passion", logo: "👕" },
+    { name: "Yes Print", logo: "🖨️" },
+    { name: "Umer Farm", logo: "🚜" },
+    { name: "Treschic", logo: "👗" },
+    { name: "Al‑Fatah", logo: "🏪" },
+    { name: "AI‑Textile", logo: "🧵" },
+    { name: "Makkah Wood", logo: "🪵" },
+    { name: "Tricon Beverages", logo: "🥤" }
   ];
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const Clients = () => {
           {clients.map((client, index) => (
             <Card 
               key={index} 
-              className={`text-center hover:shadow-md transition-all duration-500 bg-gray-50 hover:bg-white border border-gray-200 hover-scale ${
+              className={`text-center hover:shadow-md transition-all duration-500 bg-gray-50 hover:bg-white border border-gray-200 hover-scale group ${
                 isVisible 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-20'
@@ -87,8 +87,13 @@ const Clients = () => {
               }}
             >
               <CardContent className="py-6 px-3">
+                <div className="mb-3">
+                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">
+                    {client.logo}
+                  </div>
+                </div>
                 <p className="text-sm font-medium text-gray-800 leading-tight">
-                  {client}
+                  {client.name}
                 </p>
               </CardContent>
             </Card>

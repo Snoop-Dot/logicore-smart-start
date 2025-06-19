@@ -1,9 +1,11 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Users, Calculator, DollarSign, ShoppingCart, Scan, Globe } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Features = () => {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -123,6 +125,21 @@ const Features = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Learn More Button */}
+        <div className={`text-center mt-16 transition-all duration-1000 ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-10'
+        }`} style={{ transitionDelay: '800ms' }}>
+          <Button
+            onClick={() => navigate('/modules')}
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover-scale modern-shadow"
+            size="lg"
+          >
+            Learn More About Our Modules
+          </Button>
         </div>
       </div>
     </section>
