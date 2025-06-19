@@ -139,4 +139,13 @@ const Testimonials = () => {
                   <h4 className="font-bold text-gray-900 text-lg">{testimonial.name}</h4>
                   <p className="text-gray-600">{testimonial.company}</p>
                 </div>
-              </Car
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Testimonials;
