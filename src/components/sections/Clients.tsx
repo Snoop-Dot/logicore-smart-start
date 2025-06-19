@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
 
@@ -7,27 +6,27 @@ const Clients = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   const clients = [
-    { name: "Gourmet Foods", logo: "🍽️" },
-    { name: "Cresset Tech", logo: "💻" }, 
-    { name: "Amtex", logo: "🏭" },
-    { name: "Finlinx", logo: "💰" },
-    { name: "Al-Momin", logo: "🕌" },
-    { name: "KalamKaar", logo: "✏️" },
-    { name: "Ghani Group", logo: "🏢" },
-    { name: "Loot.Sale", logo: "🛒" },
-    { name: "Ali Danyal", logo: "👨‍💼" },
-    { name: "Mezan", logo: "🥛" },
-    { name: "Korangi Fisheries", logo: "🐟" },
-    { name: "Depilex", logo: "💄" },
-    { name: "Angel College", logo: "🎓" },
-    { name: "Cotton Passion", logo: "👕" },
-    { name: "Yes Print", logo: "🖨️" },
-    { name: "Umer Farm", logo: "🚜" },
-    { name: "Treschic", logo: "👗" },
-    { name: "Al‑Fatah", logo: "🏪" },
-    { name: "AI‑Textile", logo: "🧵" },
-    { name: "Makkah Wood", logo: "🪵" },
-    { name: "Tricon Beverages", logo: "🥤" }
+    { name: "Gourmet Foods", logo: "/placeholder.svg" },
+    { name: "Cresset Tech", logo: "/placeholder.svg" }, 
+    { name: "Amtex", logo: "/placeholder.svg" },
+    { name: "Finlinx", logo: "/placeholder.svg" },
+    { name: "Al-Momin", logo: "/placeholder.svg" },
+    { name: "KalamKaar", logo: "/placeholder.svg" },
+    { name: "Ghani Group", logo: "/placeholder.svg" },
+    { name: "Loot.Sale", logo: "/placeholder.svg" },
+    { name: "Ali Danyal", logo: "/placeholder.svg" },
+    { name: "Mezan", logo: "/placeholder.svg" },
+    { name: "Korangi Fisheries", logo: "/placeholder.svg" },
+    { name: "Depilex", logo: "/placeholder.svg" },
+    { name: "Angel College", logo: "/placeholder.svg" },
+    { name: "Cotton Passion", logo: "/placeholder.svg" },
+    { name: "Yes Print", logo: "/placeholder.svg" },
+    { name: "Umer Farm", logo: "/placeholder.svg" },
+    { name: "Treschic", logo: "/placeholder.svg" },
+    { name: "Al‑Fatah", logo: "/placeholder.svg" },
+    { name: "AI‑Textile", logo: "/placeholder.svg" },
+    { name: "Makkah Wood", logo: "/placeholder.svg" },
+    { name: "Tricon Beverages", logo: "/placeholder.svg" }
   ];
 
   useEffect(() => {
@@ -88,9 +87,11 @@ const Clients = () => {
             >
               <CardContent className="py-6 px-3">
                 <div className="mb-3">
-                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">
-                    {client.logo}
-                  </div>
+                  <img 
+                    src={client.logo} 
+                    alt={`${client.name} logo`}
+                    className="w-12 h-12 mx-auto object-contain group-hover:scale-110 transition-transform duration-300 rounded"
+                  />
                 </div>
                 <p className="text-sm font-medium text-gray-800 leading-tight">
                   {client.name}
