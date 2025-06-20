@@ -104,6 +104,52 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
             background-position: 100% 50%;
           }
         }
+
+        @keyframes lineMorph {
+          0% {
+            d: path("M20,20 L80,20 L80,80 L20,80 Z");
+          }
+          25% {
+            d: path("M20,20 L80,30 L70,80 L30,70 Z");
+          }
+          50% {
+            d: path("M30,15 L85,25 L75,85 L25,75 Z");
+          }
+          75% {
+            d: path("M25,25 L75,15 L85,75 L15,85 Z");
+          }
+          100% {
+            d: path("M20,20 L80,20 L80,80 L20,80 Z");
+          }
+        }
+
+        @keyframes pathDraw {
+          0% {
+            stroke-dasharray: 0 300;
+          }
+          100% {
+            stroke-dasharray: 300 0;
+          }
+        }
+
+        .morphing-lines {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 120px;
+          height: 120px;
+          pointer-events: none;
+        }
+
+        .morph-path {
+          animation: lineMorph 4s ease-in-out infinite, pathDraw 2s ease-in-out infinite;
+          stroke: rgba(59, 130, 246, 0.6);
+          stroke-width: 2;
+          fill: none;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
       `}</style>
       <div 
         className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-800 ${
@@ -116,13 +162,34 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
         }}
       >
         <div className="text-center relative">
-          {/* Enhanced Logo with Current Effect */}
+          {/* Enhanced Logo with Morphing Lines */}
           <div className="relative mb-10">
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20 blur-xl animate-pulse"></div>
+            
+            {/* Morphing Lines Animation */}
+            <svg className="morphing-lines" viewBox="0 0 100 100">
+              <path
+                className="morph-path"
+                d="M20,20 L80,20 L80,80 L20,80 Z"
+              />
+              <path
+                className="morph-path"
+                d="M30,30 L70,30 L70,70 L30,70 Z"
+                style={{ animationDelay: '0.5s' }}
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="15"
+                className="morph-path"
+                style={{ animationDelay: '1s' }}
+              />
+            </svg>
+            
             <img 
               src="/lovable-uploads/1948b5bc-c08b-4e05-87df-7c2c4fd96b27.png" 
               alt="Logicore Logo" 
-              className="relative w-28 h-28 mx-auto rounded-full"
+              className="relative w-28 h-28 mx-auto rounded-full z-10"
               style={{
                 animation: 'logoAppear 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards, logoGlow 2s ease-in-out infinite, currentFlow 3s ease-in-out infinite'
               }}

@@ -11,6 +11,7 @@ interface FormErrors {
   email?: string;
   phone?: string;
   company?: string;
+  captcha?: string;
 }
 
 const RequestDemo = () => {
@@ -20,11 +21,25 @@ const RequestDemo = () => {
     name: "",
     email: "",
     phone: "",
-    company: ""
+    company: "",
+    captcha: ""
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaQuestion, setCaptchaQuestion] = useState({ num1: 0, num2: 0, answer: 0 });
   const { toast } = useToast();
+
+  // Generate CAPTCHA question
+  const generateCaptcha = () => {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    const answer = num1 + num2;
+    setCaptchaQuestion({ num1, num2, answer });
+  };
+
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -72,9 +87,39 @@ const RequestDemo = () => {
     if (!formData.company.trim()) {
       newErrors.company = "Company name is required";
     }
+
+    if (!formData.captcha.trim()) {
+      newErrors.captcha = "Please solve the CAPTCHA";
+    } else if (parseInt(formData.captcha) !== captchaQuestion.answer) {
+      newErrors.captcha = "Incorrect answer";
+    }
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  const sendEmailNotification = async (submissionData: any) => {
+    try {
+      // Simulate email sending - in a real app, this would call your backend API
+      console.log('Sending email notification to umer.izhar.ui@gmail.com');
+      console.log('Demo request data:', submissionData);
+      
+      // This would be your actual email API call
+      // await fetch('/api/send-notification', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     to: 'umer.izhar.ui@gmail.com',
+      //     subject: 'New Demo Request',
+      //     data: submissionData
+      //   })
+      // });
+      
+      return true;
+    } catch (error) {
+      console.error('Failed to send email notification:', error);
+      return false;
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -86,16 +131,39 @@ const RequestDemo = () => {
 
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Demo Request Submitted!",
-      description: "We'll contact you within 24 hours to schedule your demo.",
-    });
-    
-    setFormData({ name: "", email: "", phone: "", company: "" });
-    setIsSubmitting(false);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Send email notification
+      const emailSent = await sendEmailNotification({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        timestamp: new Date().toISOString()
+      });
+      
+      toast({
+        title: "Demo Request Submitted!",
+        description: "We'll contact you within 24 hours to schedule your demo.",
+      });
+      
+      if (emailSent) {
+        console.log('Email notification sent successfully');
+      }
+      
+      setFormData({ name: "", email: "", phone: "", company: "", captcha: "" });
+      generateCaptcha(); // Generate new CAPTCHA
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to submit demo request. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -210,6 +278,39 @@ const RequestDemo = () => {
                     <p className="text-red-500 text-sm mt-1">{errors.company}</p>
                   )}
                 </div>
+              </div>
+
+              {/* CAPTCHA Section */}
+              <div className="bg-gray-50 p-4 rounded-lg border">
+                <Label htmlFor="captcha" className="text-sm font-medium text-gray-700 mb-2 block">
+                  Security Verification *
+                </Label>
+                <div className="flex items-center gap-4">
+                  <div className="bg-white px-4 py-2 rounded border font-mono text-lg">
+                    {captchaQuestion.num1} + {captchaQuestion.num2} = ?
+                  </div>
+                  <Input
+                    id="captcha"
+                    name="captcha"
+                    type="number"
+                    value={formData.captcha}
+                    onChange={handleChange}
+                    className={`w-24 ${errors.captcha ? 'border-red-500' : ''}`}
+                    placeholder="Answer"
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={generateCaptcha}
+                    className="text-blue-600 hover:text-blue-700"
+                  >
+                    Refresh
+                  </Button>
+                </div>
+                {errors.captcha && (
+                  <p className="text-red-500 text-sm mt-1">{errors.captcha}</p>
+                )}
               </div>
               
               <Button
