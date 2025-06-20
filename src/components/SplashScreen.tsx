@@ -12,7 +12,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
         setIsVisible(false);
         onComplete();
       }, 800); // Wait for fade out animation
-    }, 4000); // Show splash for 4 seconds to accommodate new animation
+    }, 4000); // Show splash for 4 seconds
 
     return () => clearTimeout(timer);
   }, [onComplete]);
@@ -105,70 +105,10 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           }
         }
 
-        @keyframes drawLogo {
-          0% {
-            stroke-dasharray: 0 1000;
-            stroke-dashoffset: 0;
-          }
-          100% {
-            stroke-dasharray: 1000 0;
-            stroke-dashoffset: 0;
-          }
-        }
-
-        @keyframes electricCurrent {
-          0%, 100% {
-            filter: drop-shadow(0 0 3px #fbbf24) drop-shadow(0 0 6px #f59e0b);
-          }
-          25% {
-            filter: drop-shadow(0 0 8px #fbbf24) drop-shadow(0 0 12px #f59e0b) drop-shadow(0 0 16px #d97706);
-          }
-          50% {
-            filter: drop-shadow(0 0 12px #fbbf24) drop-shadow(0 0 18px #f59e0b) drop-shadow(0 0 24px #d97706);
-          }
-          75% {
-            filter: drop-shadow(0 0 8px #fbbf24) drop-shadow(0 0 12px #f59e0b) drop-shadow(0 0 16px #d97706);
-          }
-        }
-
-        @keyframes blueCurrentEffect {
-          0%, 100% {
-            filter: drop-shadow(0 0 5px #3b82f6) drop-shadow(0 0 10px #2563eb);
-          }
-          25% {
-            filter: drop-shadow(0 0 10px #3b82f6) drop-shadow(0 0 15px #2563eb) drop-shadow(0 0 20px #1d4ed8);
-          }
-          50% {
-            filter: drop-shadow(0 0 15px #3b82f6) drop-shadow(0 0 25px #2563eb) drop-shadow(0 0 35px #1d4ed8);
-          }
-          75% {
-            filter: drop-shadow(0 0 10px #3b82f6) drop-shadow(0 0 15px #2563eb) drop-shadow(0 0 20px #1d4ed8);
-          }
-        }
-
-        .logo-drawing-container {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 120px;
-          height: 120px;
-          pointer-events: none;
-        }
-
-        .drawing-path {
-          stroke: #fbbf24;
-          stroke-width: 3;
-          fill: none;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-          animation: drawLogo 2s ease-in-out forwards, electricCurrent 1s ease-in-out infinite 2s;
-        }
-
         .logo-with-current {
-          animation: logoAppear 1s cubic-bezier(0.4, 0, 0.2, 1) 2.5s both, 
-                     logoGlow 2s ease-in-out infinite 3s, 
-                     blueCurrentEffect 1.5s ease-in-out infinite 3s;
+          animation: logoAppear 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s both, 
+                     logoGlow 2s ease-in-out infinite 2s, 
+                     currentFlow 1.5s ease-in-out infinite 2s;
         }
       `}</style>
       <div 
@@ -182,65 +122,10 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
         }}
       >
         <div className="text-center relative">
-          {/* Logo Drawing Animation */}
+          {/* Logo with Current Effect */}
           <div className="relative mb-10">
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20 blur-xl animate-pulse"></div>
             
-            {/* Yellow Line Drawing the Logo */}
-            <svg className="logo-drawing-container" viewBox="0 0 100 100">
-              {/* Outer Circle */}
-              <circle
-                cx="50"
-                cy="50"
-                r="40"
-                className="drawing-path"
-              />
-              {/* Letter L */}
-              <path
-                d="M30 25 L30 45 L40 45"
-                className="drawing-path"
-                style={{ animationDelay: '0.3s' }}
-              />
-              {/* Letter O */}
-              <circle
-                cx="50"
-                cy="35"
-                r="8"
-                className="drawing-path"
-                style={{ animationDelay: '0.6s' }}
-              />
-              {/* Letter G */}
-              <path
-                d="M62 30 A8 8 0 1 1 62 40 L66 40 L66 35"
-                className="drawing-path"
-                style={{ animationDelay: '0.9s' }}
-              />
-              {/* Letter I */}
-              <line
-                x1="30"
-                y1="55"
-                x2="30"
-                y2="75"
-                className="drawing-path"
-                style={{ animationDelay: '1.2s' }}
-              />
-              {/* Letter C */}
-              <path
-                d="M46 55 A8 8 0 0 0 46 75"
-                className="drawing-path"
-                style={{ animationDelay: '1.5s' }}
-              />
-              {/* Letter O */}
-              <circle
-                cx="62"
-                cy="65"
-                r="8"
-                className="drawing-path"
-                style={{ animationDelay: '1.8s' }}
-              />
-            </svg>
-            
-            {/* Actual Logo with Current Effect */}
             <img 
               src="/lovable-uploads/1948b5bc-c08b-4e05-87df-7c2c4fd96b27.png" 
               alt="Logicore Logo" 
@@ -252,7 +137,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           <div 
             className="text-4xl font-bold mb-6 tracking-wider"
             style={{ 
-              animation: 'textSlideUp 1s ease-out 2.8s both, shimmerText 3s ease-in-out infinite 3.5s',
+              animation: 'textSlideUp 1s ease-out 1.8s both, shimmerText 3s ease-in-out infinite 2.5s',
               background: 'linear-gradient(90deg, #1e293b, #3b82f6, #6366f1, #1e293b)',
               backgroundSize: '300% 100%',
               WebkitBackgroundClip: 'text',
@@ -270,7 +155,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           <div 
             className="text-slate-600 text-lg mb-12 font-medium"
             style={{ 
-              animation: 'textSlideUp 1s ease-out 3.1s both',
+              animation: 'textSlideUp 1s ease-out 2.1s both',
               fontFamily: 'Inter, system-ui, sans-serif'
             }}
           >
@@ -280,7 +165,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           {/* Loading Dots */}
           <div 
             className="flex justify-center space-x-3"
-            style={{ animation: 'textSlideUp 1s ease-out 3.4s both' }}
+            style={{ animation: 'textSlideUp 1s ease-out 2.4s both' }}
           >
             <div 
               className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
