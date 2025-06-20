@@ -1,10 +1,10 @@
-
 import { useState, useEffect, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { RefreshCw, Shield, CheckCircle } from "lucide-react";
 
 interface FormErrors {
   name?: string;
@@ -26,15 +26,79 @@ const RequestDemo = () => {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [captchaQuestion, setCaptchaQuestion] = useState({ num1: 0, num2: 0, answer: 0 });
+  const [captchaQuestion, setCaptchaQuestion] = useState({ 
+    type: 'math' as 'math' | 'text' | 'pattern',
+    question: '', 
+    answer: '',
+    options?: string[]
+  });
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const [captchaAttempts, setCaptchaAttempts] = useState(0);
   const { toast } = useToast();
 
-  // Generate CAPTCHA question
+  // Generate different types of CAPTCHA
   const generateCaptcha = () => {
-    const num1 = Math.floor(Math.random() * 10) + 1;
-    const num2 = Math.floor(Math.random() * 10) + 1;
-    const answer = num1 + num2;
-    setCaptchaQuestion({ num1, num2, answer });
+    const types = ['math', 'text', 'pattern'];
+    const randomType = types[Math.floor(Math.random() * types.length)] as 'math' | 'text' | 'pattern';
+    
+    switch (randomType) {
+      case 'math':
+        const operations = ['+', '-', '×'];
+        const operation = operations[Math.floor(Math.random() * operations.length)];
+        const num1 = Math.floor(Math.random() * 20) + 1;
+        const num2 = Math.floor(Math.random() * 15) + 1;
+        let answer: number;
+        let question: string;
+        
+        if (operation === '+') {
+          answer = num1 + num2;
+          question = `${num1} + ${num2}`;
+        } else if (operation === '-') {
+          const larger = Math.max(num1, num2);
+          const smaller = Math.min(num1, num2);
+          answer = larger - smaller;
+          question = `${larger} - ${smaller}`;
+        } else {
+          answer = num1 * num2;
+          question = `${num1} × ${num2}`;
+        }
+        
+        setCaptchaQuestion({
+          type: 'math',
+          question: `What is ${question}?`,
+          answer: answer.toString()
+        });
+        break;
+        
+      case 'text':
+        const words = ['SECURE', 'VERIFY', 'HUMAN', 'ACCESS', 'LOGIC', 'CORE'];
+        const word = words[Math.floor(Math.random() * words.length)];
+        const scrambled = word.split('').sort(() => Math.random() - 0.5).join('');
+        setCaptchaQuestion({
+          type: 'text',
+          question: `Unscramble this word: ${scrambled}`,
+          answer: word
+        });
+        break;
+        
+      case 'pattern':
+        const sequences = [
+          { sequence: '2, 4, 6, 8, ?', answer: '10' },
+          { sequence: '1, 4, 9, 16, ?', answer: '25' },
+          { sequence: '3, 6, 12, 24, ?', answer: '48' },
+          { sequence: '1, 1, 2, 3, 5, ?', answer: '8' }
+        ];
+        const pattern = sequences[Math.floor(Math.random() * sequences.length)];
+        setCaptchaQuestion({
+          type: 'pattern',
+          question: `Complete the sequence: ${pattern.sequence}`,
+          answer: pattern.answer
+        });
+        break;
+    }
+    
+    setCaptchaVerified(false);
+    setFormData(prev => ({ ...prev, captcha: "" }));
   };
 
   useEffect(() => {
@@ -88,14 +152,43 @@ const RequestDemo = () => {
       newErrors.company = "Company name is required";
     }
 
-    if (!formData.captcha.trim()) {
-      newErrors.captcha = "Please solve the CAPTCHA";
-    } else if (parseInt(formData.captcha) !== captchaQuestion.answer) {
-      newErrors.captcha = "Incorrect answer";
+    if (!captchaVerified) {
+      newErrors.captcha = "Please complete the security verification";
     }
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  const verifyCaptcha = () => {
+    const userAnswer = formData.captcha.trim().toLowerCase();
+    const correctAnswer = captchaQuestion.answer.toLowerCase();
+    
+    if (userAnswer === correctAnswer) {
+      setCaptchaVerified(true);
+      toast({
+        title: "✓ Verification Successful",
+        description: "Security check passed!",
+      });
+      setErrors(prev => ({ ...prev, captcha: "" }));
+    } else {
+      setCaptchaAttempts(prev => prev + 1);
+      if (captchaAttempts >= 2) {
+        generateCaptcha();
+        setCaptchaAttempts(0);
+        toast({
+          title: "New Challenge Generated",
+          description: "Too many incorrect attempts. Try the new challenge.",
+          variant: "destructive"
+        });
+      } else {
+        toast({
+          title: "Incorrect Answer",
+          description: `Try again. ${2 - captchaAttempts} attempts remaining.`,
+          variant: "destructive"
+        });
+      }
+    }
   };
 
   const sendEmailNotification = async (submissionData: any) => {
@@ -154,7 +247,9 @@ const RequestDemo = () => {
       }
       
       setFormData({ name: "", email: "", phone: "", company: "", captcha: "" });
-      generateCaptcha(); // Generate new CAPTCHA
+      setCaptchaVerified(false);
+      setCaptchaAttempts(0);
+      generateCaptcha();
     } catch (error) {
       toast({
         title: "Error",
@@ -173,6 +268,13 @@ const RequestDemo = () => {
     // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const handleCaptchaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleChange(e);
+    if (captchaVerified) {
+      setCaptchaVerified(false);
     }
   };
 
@@ -280,45 +382,94 @@ const RequestDemo = () => {
                 </div>
               </div>
 
-              {/* CAPTCHA Section */}
-              <div className="bg-gray-50 p-4 rounded-lg border">
-                <Label htmlFor="captcha" className="text-sm font-medium text-gray-700 mb-2 block">
-                  Security Verification *
-                </Label>
-                <div className="flex items-center gap-4">
-                  <div className="bg-white px-4 py-2 rounded border font-mono text-lg">
-                    {captchaQuestion.num1} + {captchaQuestion.num2} = ?
-                  </div>
-                  <Input
-                    id="captcha"
-                    name="captcha"
-                    type="number"
-                    value={formData.captcha}
-                    onChange={handleChange}
-                    className={`w-24 ${errors.captcha ? 'border-red-500' : ''}`}
-                    placeholder="Answer"
-                  />
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={generateCaptcha}
-                    className="text-blue-600 hover:text-blue-700"
-                  >
-                    Refresh
-                  </Button>
+              {/* Enhanced CAPTCHA Section */}
+              <div className="bg-gradient-to-r from-gray-50 to-blue-50 p-6 rounded-lg border-2 border-gray-200">
+                <div className="flex items-center gap-2 mb-4">
+                  <Shield className="w-5 h-5 text-blue-600" />
+                  <Label className="text-sm font-semibold text-gray-700">
+                    Advanced Security Verification
+                  </Label>
+                  {captchaVerified && (
+                    <CheckCircle className="w-5 h-5 text-green-600 ml-auto" />
+                  )}
                 </div>
+                
+                <div className="bg-white p-4 rounded-lg border mb-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm text-gray-600 font-medium">
+                      Challenge Type: {captchaQuestion.type.toUpperCase()}
+                    </span>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={generateCaptcha}
+                      className="text-blue-600 hover:text-blue-700"
+                    >
+                      <RefreshCw className="w-4 h-4 mr-1" />
+                      New Challenge
+                    </Button>
+                  </div>
+                  
+                  <div className="bg-gray-100 p-3 rounded font-mono text-lg text-center mb-3 border">
+                    {captchaQuestion.question}
+                  </div>
+                  
+                  <div className="flex gap-2">
+                    <Input
+                      name="captcha"
+                      type="text"
+                      value={formData.captcha}
+                      onChange={handleCaptchaChange}
+                      className={`flex-1 ${errors.captcha ? 'border-red-500' : ''} ${
+                        captchaVerified ? 'border-green-500 bg-green-50' : ''
+                      }`}
+                      placeholder="Enter your answer"
+                      disabled={captchaVerified}
+                    />
+                    <Button
+                      type="button"
+                      onClick={verifyCaptcha}
+                      disabled={!formData.captcha || captchaVerified}
+                      className={`px-6 ${
+                        captchaVerified 
+                          ? 'bg-green-600 hover:bg-green-700' 
+                          : 'bg-blue-600 hover:bg-blue-700'
+                      }`}
+                    >
+                      {captchaVerified ? 'Verified' : 'Verify'}
+                    </Button>
+                  </div>
+                </div>
+                
                 {errors.captcha && (
-                  <p className="text-red-500 text-sm mt-1">{errors.captcha}</p>
+                  <p className="text-red-500 text-sm flex items-center gap-1">
+                    <span>⚠️</span>
+                    {errors.captcha}
+                  </p>
+                )}
+                
+                {captchaAttempts > 0 && !captchaVerified && (
+                  <p className="text-amber-600 text-sm flex items-center gap-1">
+                    <span>⚡</span>
+                    Attempts remaining: {3 - captchaAttempts}
+                  </p>
                 )}
               </div>
               
               <Button
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                disabled={isSubmitting || !captchaVerified}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "Submitting..." : "Request Demo"}
+                {isSubmitting ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Submitting...
+                  </div>
+                ) : (
+                  "Request Demo"
+                )}
               </Button>
             </form>
           </CardContent>
