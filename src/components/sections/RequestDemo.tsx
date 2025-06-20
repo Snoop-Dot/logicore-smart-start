@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -30,7 +31,7 @@ const RequestDemo = () => {
     type: 'math' as 'math' | 'text' | 'pattern',
     question: '', 
     answer: '',
-    options?: string[]
+    options: [] as string[]
   });
   const [captchaVerified, setCaptchaVerified] = useState(false);
   const [captchaAttempts, setCaptchaAttempts] = useState(0);
@@ -66,7 +67,8 @@ const RequestDemo = () => {
         setCaptchaQuestion({
           type: 'math',
           question: `What is ${question}?`,
-          answer: answer.toString()
+          answer: answer.toString(),
+          options: []
         });
         break;
         
@@ -77,7 +79,8 @@ const RequestDemo = () => {
         setCaptchaQuestion({
           type: 'text',
           question: `Unscramble this word: ${scrambled}`,
-          answer: word
+          answer: word,
+          options: []
         });
         break;
         
@@ -92,7 +95,8 @@ const RequestDemo = () => {
         setCaptchaQuestion({
           type: 'pattern',
           question: `Complete the sequence: ${pattern.sequence}`,
-          answer: pattern.answer
+          answer: pattern.answer,
+          options: []
         });
         break;
     }
