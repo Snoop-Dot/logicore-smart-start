@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -99,5 +100,40 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Fix for heading letter cutting - ensure proper line height and padding */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2 !important;
+    padding-bottom: 2px !important;
+    overflow: visible !important;
+  }
+
+  /* Ensure text elements have proper spacing */
+  p, span, div {
+    line-height: 1.5 !important;
+    overflow: visible !important;
+  }
+
+  /* Fix for specific text classes that might be cutting letters */
+  .text-3xl, .text-4xl, .text-5xl, .text-6xl {
+    line-height: 1.1 !important;
+    padding-bottom: 4px !important;
+  }
+
+  .text-2xl {
+    line-height: 1.2 !important;
+    padding-bottom: 3px !important;
+  }
+
+  .text-xl {
+    line-height: 1.3 !important;
+    padding-bottom: 2px !important;
+  }
+
+  /* Ensure gradient text doesn't get clipped */
+  .bg-clip-text {
+    padding-bottom: 4px !important;
+    overflow: visible !important;
   }
 }
