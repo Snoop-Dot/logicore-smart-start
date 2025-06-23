@@ -1,6 +1,7 @@
 
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
+import VideoIntro from "@/components/sections/VideoIntro";
 import Features from "@/components/sections/Features";
 import AboutUs from "@/components/sections/AboutUs";
 import WhyLogicore from "@/components/sections/WhyLogicore";
@@ -22,6 +23,9 @@ const Index = () => {
       <div className="pt-16">
         <div className="animate-fade-in">
           <Hero />
+        </div>
+        <div id="video-intro" className="animate-slide-in-up" style={{ animationDelay: '0.1s' }}>
+          <VideoIntro />
         </div>
         <div id="features" className="animate-slide-in-left" style={{ animationDelay: '0.2s' }}>
           <Features />
