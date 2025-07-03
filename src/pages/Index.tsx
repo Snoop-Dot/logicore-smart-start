@@ -1,7 +1,6 @@
 
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
-import VideoIntro from "@/components/sections/VideoIntro";
 import Features from "@/components/sections/Features";
 import AboutUs from "@/components/sections/AboutUs";
 import WhyLogicore from "@/components/sections/WhyLogicore";
@@ -24,43 +23,40 @@ const Index = () => {
         <div className="animate-fade-in">
           <Hero />
         </div>
-        <div id="video-intro" className="animate-slide-in-up" style={{ animationDelay: '0.1s' }}>
-          <VideoIntro />
-        </div>
-        <div id="features" className="animate-slide-in-left" style={{ animationDelay: '0.2s' }}>
+        <div id="features" className="animate-slide-in-left" style={{ animationDelay: '0.1s' }}>
           <Features />
         </div>
-        <div id="about-us" className="animate-slide-in-right" style={{ animationDelay: '0.4s' }}>
+        <div id="about-us" className="animate-slide-in-right" style={{ animationDelay: '0.2s' }}>
           <AboutUs />
         </div>
-        <div id="why-logicore" className="animate-slide-in-left" style={{ animationDelay: '0.6s' }}>
+        <div id="why-logicore" className="animate-slide-in-left" style={{ animationDelay: '0.3s' }}>
           <WhyLogicore />
         </div>
-        <div id="our-journey" className="animate-slide-in-right" style={{ animationDelay: '0.8s' }}>
+        <div id="our-journey" className="animate-slide-in-right" style={{ animationDelay: '0.4s' }}>
           <OurJourney />
         </div>
-        <div id="testimonials" className="animate-slide-in-left" style={{ animationDelay: '1s' }}>
+        <div id="testimonials" className="animate-slide-in-left" style={{ animationDelay: '0.5s' }}>
           <Testimonials />
         </div>
-        <div id="integrations" className="animate-slide-in-right" style={{ animationDelay: '1.2s' }}>
+        <div id="integrations" className="animate-slide-in-right" style={{ animationDelay: '0.6s' }}>
           <Integrations />
         </div>
-        <div id="workflow" className="animate-slide-in-left" style={{ animationDelay: '1.4s' }}>
+        <div id="workflow" className="animate-slide-in-left" style={{ animationDelay: '0.7s' }}>
           <Workflow />
         </div>
-        <div id="data-security" className="animate-slide-in-right" style={{ animationDelay: '1.6s' }}>
+        <div id="data-security" className="animate-slide-in-right" style={{ animationDelay: '0.8s' }}>
           <DataSecurity />
         </div>
-        <div id="faqs" className="animate-slide-in-left" style={{ animationDelay: '1.8s' }}>
+        <div id="faqs" className="animate-slide-in-left" style={{ animationDelay: '0.9s' }}>
           <FAQs />
         </div>
-        <div id="awards" className="animate-slide-in-right" style={{ animationDelay: '2s' }}>
+        <div id="awards" className="animate-slide-in-right" style={{ animationDelay: '1s' }}>
           <Awards />
         </div>
-        <div id="clients" className="animate-slide-in-left" style={{ animationDelay: '2.2s' }}>
+        <div id="clients" className="animate-slide-in-left" style={{ animationDelay: '1.1s' }}>
           <Clients />
         </div>
-        <div id="request-demo" className="animate-slide-in-right" style={{ animationDelay: '2.4s' }}>
+        <div id="request-demo" className="animate-slide-in-right" style={{ animationDelay: '1.2s' }}>
           <RequestDemo />
         </div>
         <Footer />

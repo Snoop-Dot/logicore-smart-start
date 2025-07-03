@@ -157,6 +157,14 @@ export default {
 					'50%': {
 						transform: 'translateY(-20px)'
 					}
+				},
+				'gradient-shift': {
+					'0%, 100%': {
+						'background-position': '0% 50%'
+					},
+					'50%': {
+						'background-position': '100% 50%'
+					}
 				}
 			},
 			animation: {
@@ -168,7 +176,8 @@ export default {
 				'slide-in-up': 'slide-in-up 0.8s ease-out forwards',
 				'scale-in': 'scale-in 0.6s ease-out forwards',
 				'bounce-in': 'bounce-in 1s ease-out forwards',
-				'float': 'float 3s ease-in-out infinite'
+				'float': 'float 3s ease-in-out infinite',
+				'gradient-shift': 'gradient-shift 3s ease-in-out infinite'
 			}
 		}
 	},
@@ -186,7 +195,7 @@ export default {
 					'@apply shadow-[0_8px_30px_rgb(0,0,0,0.12)]': {}
 				},
 				'.gradient-border': {
-					'@apply bg-gradient-to-r from-blue-500 to-purple-500 p-[1px] rounded-lg': {}
+					'@apply bg-gradient-to-r from-purple-500 to-pink-500 p-[1px] rounded-lg': {}
 				}
 			}
 			addUtilities(newUtilities)
