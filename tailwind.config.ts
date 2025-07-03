@@ -69,6 +69,9 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			boxShadow: {
+				'3xl': '0 35px 60px -12px rgba(0, 0, 0, 0.25)',
+			},
 			keyframes: {
 				'accordion-down': {
 					from: {
@@ -143,7 +146,7 @@ export default {
 					},
 					'50%': {
 						opacity: '1',
-						transform: 'scale(1.1) translateY(-10px)'
+						transform: 'scale(1.05) translateY(-5px)'
 					},
 					'100%': {
 						opacity: '1',
@@ -190,12 +193,6 @@ export default {
 				},
 				'.glass-effect': {
 					'@apply backdrop-blur-sm bg-white/10 border border-white/20': {}
-				},
-				'.modern-shadow': {
-					'@apply shadow-[0_8px_30px_rgb(0,0,0,0.12)]': {}
-				},
-				'.gradient-border': {
-					'@apply bg-gradient-to-r from-purple-500 to-pink-500 p-[1px] rounded-lg': {}
 				}
 			}
 			addUtilities(newUtilities)

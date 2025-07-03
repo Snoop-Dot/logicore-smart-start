@@ -126,23 +126,25 @@ const Hero = () => {
           </div>
         </div>
         
+        {/* Simplified button container with proper styling */}
         <div className={`transition-all duration-1000 delay-700 ${
           isVisible 
-            ? 'opacity-100 translate-y-0 scale-100' 
-            : 'opacity-0 translate-y-10 scale-95'
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-10'
         }`}>
-          <Button 
-            onClick={scrollToDemo}
-            className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 text-white px-12 py-8 text-xl rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-110 modern-shadow relative overflow-hidden group animate-bounce-in"
-            size="lg"
-            style={{ animationDelay: '2.2s' }}
-          >
-            <span className="relative z-10">Get Started Today</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </Button>
+          <div className="flex justify-center animate-fade-in" style={{ animationDelay: '2.2s' }}>
+            <Button 
+              onClick={scrollToDemo}
+              className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 text-white px-12 py-8 text-xl rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 relative overflow-hidden group"
+              size="lg"
+            >
+              <span className="relative z-10">Get Started Today</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </Button>
+          </div>
         </div>
 
-        {/* Enhanced Floating elements */}
+        {/* Simplified floating elements */}
         <div className="absolute top-1/4 left-1/4 w-4 h-4 bg-blue-400 rounded-full animate-bounce opacity-60" style={{ animationDelay: '2.5s' }}></div>
         <div className="absolute bottom-1/4 right-1/4 w-3 h-3 bg-purple-400 rounded-full animate-bounce opacity-60" style={{ animationDelay: '3s' }}></div>
         <div className="absolute top-1/2 right-1/6 w-2 h-2 bg-indigo-400 rounded-full animate-bounce opacity-60" style={{ animationDelay: '3.5s' }}></div>
