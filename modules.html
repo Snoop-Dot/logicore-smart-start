@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logicore ERP Modules - Comprehensive Business Solutions</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .modules-section {
+      padding: 6rem 1rem;
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      min-height: 100vh;
+    }
+
+    .modules-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .modules-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .modules-title {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #1a202c;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .modules-subtitle {
+      font-size: 1.25rem;
+      color: #4a5568;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .module-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #e2e8f0;
+    }
+
+    .module-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .module-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .module-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      color: white;
+    }
+
+    .module-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #2d3748;
+    }
+
+    .module-description {
+      color: #4a5568;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .module-features {
+      list-style: none;
+      padding: 0;
+    }
+
+    .module-features li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      color: #2d3748;
+    }
+
+    .module-features li::before {
+      content: "✓";
+      color: #10b981;
+      font-weight: bold;
+      margin-right: 0.75rem;
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-btn:hover {
+      transform: scale(1.05);
+    }
+
+    @media (min-width: 768px) {
+      .modules-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="back-btn" onclick="window.close()">← Back to Main Site</button>
+  
+  <section class="modules-section">
+    <div class="modules-container">
+      <div class="modules-header">
+        <h1 class="modules-title">Logicore ERP Modules</h1>
+        <p class="modules-subtitle">
+          Comprehensive business solutions designed to streamline your operations and accelerate growth.
+        </p>
+      </div>
+
+      <div class="modules-grid">
+        <!-- HRM Module -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon" style="background: linear-gradient(135deg, #34d399, #059669);">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+              </svg>
+            </div>
+            <h3 class="module-title">Human Resource Management</h3>
+          </div>
+          <p class="module-description">
+            Complete HR solution for managing employees, payroll, attendance, and performance across your organization.
+          </p>
+          <ul class="module-features">
+            <li>Employee Information Management</li>
+            <li>Payroll Processing & Tax Calculations</li>
+            <li>Attendance & Leave Management</li>
+            <li>Performance Evaluations</li>
+            <li>Recruitment & Onboarding</li>
+            <li>Employee Self-Service Portal</li>
+          </ul>
+        </div>
+
+        <!-- Accounting Module -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon" style="background: linear-gradient(135deg, #60a5fa, #3b82f6);">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <h3 class="module-title">Accounting & Bookkeeping</h3>
+          </div>
+          <p class="module-description">
+            Automated accounting system with real-time financial reporting and compliance management.
+          </p>
+          <ul class="module-features">
+            <li>Chart of Accounts Management</li>
+            <li>General Ledger & Journal Entries</li>
+            <li>Accounts Payable & Receivable</li>
+            <li>Financial Statements Generation</li>
+            <li>Tax Management & Compliance</li>
+            <li>Bank Reconciliation</li>
+          </ul>
+        </div>
+
+        <!-- Finance Module -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon" style="background: linear-gradient(135deg, #a78bfa, #8b5cf6);">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="module-title">Financial Management</h3>
+          </div>
+          <p class="module-description">
+            Advanced financial planning tools for budgeting, forecasting, and strategic financial analysis.
+          </p>
+          <ul class="module-features">
+            <li>Budget Planning & Control</li>
+            <li>Cash Flow Management</li>
+            <li>Financial Forecasting</li>
+            <li>Cost Center Management</li>
+            <li>Investment Tracking</li>
+            <li>Financial Analytics & Reporting</li>
+          </ul>
+        </div>
+
+        <!-- POS Module -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon" style="background: linear-gradient(135deg, #fb923c, #ea580c);">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v4a2 2 0 01-2 2H9a2 2 0 01-2-2v-4m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"/>
+              </svg>
+            </div>
+            <h3 class="module-title">Point of Sale (POS)</h3>
+          </div>
+          <p class="module-description">
+            Modern POS system with inventory management, sales tracking, and customer relationship tools.
+          </p>
+          <ul class="module-features">
+            <li>Fast & Intuitive Sales Interface</li>
+            <li>Inventory Management</li>
+            <li>Multiple Payment Methods</li>
+            <li>Customer Management</li>
+            <li>Sales Reports & Analytics</li>
+            <li>Multi-location Support</li>
+          </ul>
+        </div>
+
+        <!-- CRM Module -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon" style="background: linear-gradient(135deg, #2dd4bf, #0d9488);">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20a3 3 0 01-3-3v-1a8.001 8.001 0 0115.938-2.578M7 20v-2c0-.656.126-1.283.356-1.857m0 0a8.002 8.002 0 0115.287 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+              </svg>
+            </div>
+            <h3 class="module-title">Customer Relationship Management</h3>
+          </div>
+          <p class="module-description">
+            Comprehensive CRM system to manage customer interactions, sales pipeline, and marketing campaigns.
+          </p>
+          <ul class="module-features">
+            <li>Contact & Lead Management</li>
+            <li>Sales Pipeline Tracking</li>
+            <li>Marketing Campaign Management</li>
+            <li>Customer Service Ticketing</li>
+            <li>Sales Forecasting</li>
+            <li>Customer Analytics</li>
+          </ul>
+        </div>
+
+        <!-- Inventory Module -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-icon" style="background: linear-gradient(135deg, #818cf8, #6366f1);">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+              </svg>
+            </div>
+            <h3 class="module-title">Inventory Management</h3>
+          </div>
+          <p class="module-description">
+            Advanced inventory control with real-time tracking, automated reordering, and warehouse management.
+          </p>
+          <ul class="module-features">
+            <li>Real-time Stock Tracking</li>
+            <li>Automated Reorder Points</li>
+            <li>Multi-warehouse Management</li>
+            <li>Barcode Integration</li>
+            <li>Stock Movement Reports</li>
+            <li>Supplier Management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Simple fade-in animation for module cards
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.module-card');
+      
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        
+        setTimeout(() => {
+          card.style.transition = 'all 0.6s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 150);
+      });
+    });
+  </script>
+</body>
+</html>
